@@ -2,113 +2,110 @@
 :host {
   display: block;
   padding: 2rem;
-  background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradiente de fundo moderno */
+  background: linear-gradient(to right, #76b852, #8DC26F); /* Gradiente verde moderno */
   min-height: 100vh;
-  font-family: 'Poppins', sans-serif; /* Fonte moderna */
+  font-family: 'Poppins', sans-serif;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
+  margin-bottom: 1.5rem;
   text-align: center;
-  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Section container styles */
 section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 2rem;
   margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
-/* Styling for the list component */
-app-software-list {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-app-software-list:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Information installation form styling */
-app-installation-form, app-request-new-software {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-app-installation-form:hover,
-app-request-new-software:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Button to show the software request form */
-button {
-  background-color: transparent;
-  color: #2575fc;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
+button.text-blue-600 {
+  color: black !important; /* Cor verde no lugar do azul */
+  transition: all 0.3s ease;
+  background: #4facfe  ;
+  border: black 1px solid;
   cursor: pointer;
-  transition: color 0.3s ease;
-  text-decoration: underline;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+
+  &:hover {
+    color: black !important;
+    background: #82c4ff (255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
 }
 
-button:hover {
-  color: #6a11cb;
-}
-
-/* Toast notification styles */
 .toast {
   position: fixed;
-  bottom: 20px;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
+  background: #4CAF50;
+  color: white;
   padding: 1rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  animation: toastAnimation 3s forwards;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
 }
 
-@keyframes toastAnimation {
+/* Animations */
+@keyframes gradientAnimation {
   0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(20px);
+    background-position: 0% 50%;
   }
   50% {
-    opacity: 1;
+    background-position: 100% 50%;
   }
   100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(20px);
+    background-position: 0% 50%;
   }
 }
 
-/* Responsive design */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Mobile responsive */
 @media (max-width: 768px) {
+  :host {
+    padding: 1rem;
+  }
+
   h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 
   section {
-    margin-bottom: 1.5rem;
-  }
-
-  app-software-list, app-installation-form, app-request-new-software {
     padding: 1.5rem;
   }
 
-  button {
+  .toast {
+    width: 90%;
+    text-align: center;
     font-size: 0.9rem;
   }
+}
+
+/* Background animation */
+:host {
+  background: linear-gradient(45deg, #F0E6FF, #E040FB, #9D4EDD, #6C3483, #8A2BE2, #FF00FF, #4B0082, #2E0854);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
 }
